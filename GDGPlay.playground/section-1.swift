@@ -58,3 +58,129 @@ var arregloVacio = []
 var diccionario = ["GDG": "Monterrey", "eventos" : 2]
 
 var diccionarioDefinido : [String : Int] = ["one":1]
+
+//También tenemos algo cool llamado tuplas
+
+var tupla = (1,0)
+tupla.0
+tupla.1
+
+//También puedes ponerle clave como a los diccionarios
+var tuplaNombrada = (valor1: "Valor uno", valor2: "Valor dos")
+tuplaNombrada.0
+tuplaNombrada.1
+
+tuplaNombrada.valor1
+tuplaNombrada.valor2
+
+//Bueno ahora que entramos en temas más interesantes vamos a ver condicionales, recuerden que la sentencia if evalua el resultado de una expresión booleana
+
+if false | 1 == 1 {
+    println("Hola")
+}
+
+
+//Tenemos if-else, pero también if-else if
+if false {
+
+} else if true {
+    println("Hola again")
+}
+
+//Ese if es muy cool si tenemos operaciones arrojarán un valor opcional, un valor opcional puede contener un valor o puede contener un dato nulo, si el resultado es nulo pues no se ejecuta lo que esta dentro del if, vamos prueba :D
+if let numero = "1".toInt() {
+    println("\(numero) esta establecido")
+} else {
+    println("No esta definido, es nulo, demos vueltas y lloremos D:")
+}
+
+
+//Muy cool verdad? Bueno ahora haremos algo con Switch, un Switch muy coqueto, dejenme contarles una historia, hay una sentencia llamada break que va en cada sentencia "case" de un switch, resulta algo molesta ya que sino la pones hace todo lo demas...es horrible, pero en swift es al reves, para ejecutar "cases" consecutivos se usa la palabra reservada fallthrough
+
+let numero = 10
+
+
+switch numero {
+case 1: "Es uno"
+default: "No es uno" // Default es obligatorio
+}
+
+//Podemos evaluar rangos
+switch numero {
+case 1: "Es uno"
+case 2...10: "Esta entre 2 y 11"
+    //Descomenten la linea de abajo y vean que no les miento
+    //fallthrough
+default: "No es uno"
+}
+
+//Algo muy cool tambien es que podemos hacer una evaluación del valor, usando let y where :D
+switch numero {
+case 1: "Es uno"
+case let x where  2...10 ~=  x && x % 2 == 0: "Es par y esta entre 2 y 10"
+    //Descomenten la linea de abajo y vean que no les miento
+    //fallthrough
+default: "No es uno"
+}
+
+//Tambien podemos evaluar cadenas y tuplas con switch :D
+
+
+
+
+switch tupla{
+    //Podemos evaluar la tupla completa
+case (1,1): "Hola :D"
+    //Podemos evaluar solo parte de la tupla
+case (_,0): "Uno de sus valores es 0"
+//Podemos evaluar rangos en la tupla
+case (0...1, 0...1): "Rangos, cool"
+default: "No coinciden"
+}
+
+//Muy bien, si llegaste hasta aqui mis respetos, ahora veremos ciclos y en el próximo playground haremos algoritmos, funciones, structs y clases ya que tenemos los conocimientos básicos vistos en este play...jajaja, no esta tan bueno pero hay algunas cosas coquetas
+
+//Primero comencemos con el while, con su sintaxis clásica
+var i = 0;
+while i < 10{
+    i++
+}
+
+//El famoso do-while
+i = 0
+do{
+    i++
+} while i < 10
+
+//Y ahora el padre de los ciclos, el poderoso for
+for var x = 0; x < 10; x++ { //Un clásico
+    println(x)
+}
+
+//El for de rangos u objetos
+for x in 1...10 {
+    println(x)
+}
+
+//Cadenas :3
+for x in "Hola" {
+    println(x)
+}
+
+//Y algo muy cool, podemos dejar el espacio para el iterador vacio :) por si solo necesitamos hacer iteraciones sin necesidad de un contador
+
+for _ in 1...10 {
+    println("hola")
+}
+
+//Tambien podemos iterar diccionarios
+let numeros = ["uno": 1, "dos": 2, "tres": 3]
+for (clave, valor) in numeros {
+    println("Clave: \(clave) Valor:\(valor)")
+}
+
+// Y valores opcionales
+for (_, valor) in numeros {
+    println(" Valor:\(valor)")
+}
+ 
