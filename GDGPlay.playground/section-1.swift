@@ -1,7 +1,8 @@
 // Playground - Exploremos características de Swift jugando :3
 /**
-Author: Joel Humberto Gómez Paredes
-Group: GDG Monterrey
+@author: Joel Humberto Gómez Paredes
+@group: GDG Monterrey
+@version: 1.0.3
 */
 import UIKit
 
@@ -183,4 +184,78 @@ for (clave, valor) in numeros {
 for (_, valor) in numeros {
     println(" Valor:\(valor)")
 }
- 
+
+//Bueno ahora hablaremos de funciones, estas son pequeños fragmentos de código con una funcionalidad definida, esta organización nos permite reutilizar el código
+
+//Función que no recibe parametros ni regresa un valor
+func holaFuncion(){
+    println("Hola Funcion")
+}
+
+holaFuncion()
+
+//Ahora una función que recibe 2 parametros
+func dosValores(hola: String, mundo: String)->String{
+    return hola+" "+mundo;
+}
+
+dosValores("hola", "mundo")
+
+//Ahora veamos una función que regresa multiples parametros
+func dosValoresMultiples(hola: String, mundo: String)->(String, String){
+    return ( hola, mundo)
+}
+
+//Tambien podemos regresar múltipleas valores y acceder a ellos mediante un indice o su nombre local
+let mensaje = dosValoresMultiples("Hola ", "Mundo")
+println(mensaje.0)
+
+//Les podemos poner nombres a los parametros para que se diviertan
+func dosValoresFancy(aquivahola hola: String, aquivamundo mundo: String)->String{
+    return hola+" "+mundo
+}
+
+
+let mensaje2 = dosValoresFancy(aquivahola: "Hola", aquivamundo:"Mundo")
+println(mensaje2)
+
+//También podemos usar parámetros por default :D
+func imprimeMensaje(mensajeDefault:String = "Hola Monterrey"){
+    println(mensajeDefault)
+}
+
+imprimeMensaje()
+
+//Se puede escribir el nombre de los parametros o no hacerlo, esto aplica solo para aquellos parametros que no tengan un valor por defecto
+func imprimeMensajeOpcional(mensajeDefault:String = "Hola Monterrey", stringNoOpcional: String){
+    println(mensajeDefault)
+}
+
+imprimeMensajeOpcional(mensajeDefault: "Hola","" )
+
+//Cantidad de argumentos variables...también esta dospoble en swift
+func sumaArgumentosVariables(numeros: Int...)->Int{
+    var suma:Int = 0
+    for i in numeros{
+        suma += i;
+    }
+    return suma
+}
+
+sumaArgumentosVariables(2,3,10)
+
+//Normalmento los parametros en las funciones son pasados por valor pero también pueden ser usados como referencia. Esto poniendo la palabra inout antes de la declareción del parametro y pasando el "apuntador" a la función
+
+func argumentosVariables (inout numero:Int)->Int{
+    return ++numero
+}
+
+var myNumber = 11;
+argumentosVariables(&myNumber)
+myNumber
+
+
+
+
+
+
